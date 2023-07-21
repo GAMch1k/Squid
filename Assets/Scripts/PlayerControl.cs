@@ -48,7 +48,7 @@ public class PlayerControl : MonoBehaviour {
     }
 
     private void OnTriggerStay2D(Collider2D collision) {
-        if (collision.tag == "platform") {
+        if (collision.tag == "platform" || collision.tag == "Box") {
             can_jump = true;
         }
     }
