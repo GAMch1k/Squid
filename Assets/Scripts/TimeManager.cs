@@ -14,13 +14,16 @@ public class TimeManager : MonoBehaviour {
 
     private Transform _initialPlayerPos; // replace with pos tracking
 
+    public delegate void OnNewTimeCycle();
+
+    public static OnNewTimeCycle NewTimeCycleEvent;
+
     private void _NewTimeCycle()
     {
         _currentRun++;
         _currentTick = 0;
         
-        GameObject.FindWithTag("shtheater").GetComponent<ShadowTheater>().NewTimeCycle(false);
-        GameObject.FindWithTag("Player").GetComponent<PlayerControl>().NewTimeCycle();
+        NewTimeCycleEvent?.Invoke();
     }
 
     public int GetCurrentTick()

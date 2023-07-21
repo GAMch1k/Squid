@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,9 +16,16 @@ public class PlayerControl : MonoBehaviour {
     void Start() {
         rb = GetComponent<Rigidbody2D>();
         _initialPos = gameObject.GetComponent<Transform>().position;
+
+        TimeManager.NewTimeCycleEvent += _newTimeCycle;
     }
 
-    public void NewTimeCycle()
+    private void OnDisable()
+    {
+        TimeManager.NewTimeCycleEvent -= _newTimeCycle;
+    }
+
+    private void _newTimeCycle()
     {
         gameObject.GetComponent<Transform>().position = _initialPos;
     }

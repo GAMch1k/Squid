@@ -19,6 +19,13 @@ public class ShadowTheater : MonoBehaviour
         _timeManager = GameObject.FindWithTag("timemanager").GetComponent<TimeManager>();
         _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
         _shadowPrefab = Resources.Load("Prefabs/ShadowActor") as GameObject;
+
+        TimeManager.NewTimeCycleEvent += _newTimeCycle;
+    }
+
+    private void OnDisable()
+    {
+        TimeManager.NewTimeCycleEvent -= _newTimeCycle;
     }
 
     void FixedUpdate()
@@ -43,7 +50,7 @@ public class ShadowTheater : MonoBehaviour
 
     }
 
-    public void NewTimeCycle(bool isFinal)
+    private void _newTimeCycle()
     {
         var currentRun = _timeManager.GetCurrentRun();
         if (currentRun > 0)
@@ -51,14 +58,13 @@ public class ShadowTheater : MonoBehaviour
             _shadowReplay();
         }
         
-        if (isFinal)
-        {
-            _recordNewTraces = false;
-        }
+        // if (isFinal)
+        // {
+        //     _recordNewTraces = false;
+        // }
 
         List<Vector3> whiteTemplate = new List<Vector3>();
         _phantomTraces.Add(whiteTemplate);
-        
     }
 
     private void _shadowReplay()
