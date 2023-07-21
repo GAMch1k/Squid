@@ -10,10 +10,17 @@ public class PlayerControl : MonoBehaviour {
 
     public Rigidbody2D rb;
 
+    private Vector3 _initialPos;
+
     void Start() {
         rb = GetComponent<Rigidbody2D>();
+        _initialPos = gameObject.GetComponent<Transform>().position;
     }
 
+    public void NewTimeCycle()
+    {
+        gameObject.GetComponent<Transform>().position = _initialPos;
+    }
 
     void FixedUpdate() {
         Vector3 movement = new Vector3(speed.x * Input.GetAxis("Horizontal"), 0, 0);
