@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - platform
+  - Shadow
+  - shtheater
+  - timemanager
   layers:
   - Default
   - TransparentFX
