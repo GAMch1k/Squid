@@ -23,7 +23,7 @@ public class PlayerControl : MonoBehaviour {
         
         if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow)) {
             if (can_jump) {
-                can_jump = false;
+                can_jump = false; // maybe should delete it
 
                 Vector2 jump = new Vector2(0, speed.y);
 
@@ -36,5 +36,9 @@ public class PlayerControl : MonoBehaviour {
         if (collision.tag == "platform") {
             can_jump = true;
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision) {
+        can_jump = false;
     }
 }
