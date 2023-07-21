@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour {
 
-    public Vector2 speed = new Vector2(8, 8);
+    public Vector2 speed = new Vector2(5, 11);
 
     public bool can_jump = false;
 
@@ -15,18 +15,20 @@ public class PlayerControl : MonoBehaviour {
     }
 
 
-    void Update() {
+    void FixedUpdate() {
         Vector3 movement = new Vector3(speed.x * Input.GetAxis("Horizontal"), 0, 0);
         movement *= Time.deltaTime;
 
         transform.Translate(movement);
         
-        if (Input.GetKey(KeyCode.Space) && can_jump) {
-            can_jump = false;
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow)) {
+            if (can_jump) {
+                can_jump = false;
 
-            Vector2 jump = new Vector2(0, speed.y);
+                Vector2 jump = new Vector2(0, speed.y);
 
-            rb.AddForce(Vector2.up * speed.y, ForceMode2D.Impulse);
+                rb.AddForce(Vector2.up * speed.y, ForceMode2D.Impulse);
+            }
         }
     }
 
