@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 193476627249677081}
   - component: {fileID: 5656086553554538708}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 606296958978064005}
   - component: {fileID: 3698865836229440521}
   - component: {fileID: 4721658981039150562}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShadowActor
   m_TagString: Shadow
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 72
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

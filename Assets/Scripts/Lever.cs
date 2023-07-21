@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Lever : MonoBehaviour {
@@ -11,6 +12,7 @@ public class Lever : MonoBehaviour {
             Debug.Log("LEVER OPENED");
         }
     }
+    
 
     private void OnTriggerExit2D(Collider2D collision) {
         triggered = false;
