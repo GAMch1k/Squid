@@ -11,10 +11,12 @@ public class Button : MonoBehaviour {
         if (only_box) {
             if (collision.tag == "Box") {
                 triggered = true;
+                Debug.Log("BOX BUTTON OPENED");
             }
         } else {
             if (collision.tag == "Player" || collision.tag == "Box" || collision.tag == "Shadow") {
                 triggered = true;
+                Debug.Log("BUTTON OPENED");
             }
 
         }

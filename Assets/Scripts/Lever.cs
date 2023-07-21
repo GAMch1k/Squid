@@ -8,6 +8,7 @@ public class Lever : MonoBehaviour {
     private void OnTriggerStay2D(Collider2D collision) {
         if (collision.tag == "Player" || collision.tag == "Shadow") {
             triggered = true;
+            Debug.Log("LEVER OPENED");
         }
     }
 

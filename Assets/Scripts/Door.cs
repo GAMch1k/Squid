@@ -27,7 +27,6 @@ public class Door : MonoBehaviour {
             }
 
             OpenDoor();
-            
         }   
     }
 
