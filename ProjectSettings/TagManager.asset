@@ -8,11 +8,13 @@ TagManager:
   - Shadow
   - shtheater
   - timemanager
+  - Usable
+  - Box
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - 
