@@ -28,7 +28,7 @@ public class ShadowTheater : MonoBehaviour
 
         for (int i = 0; i < _shadows.Count; i++)
         {
-            if (_phantomTraces[i].Count < currentTick)
+            if (_phantomTraces[i].Count <= currentTick)
             {
                 continue;
             }
@@ -39,10 +39,6 @@ public class ShadowTheater : MonoBehaviour
         {
             var playerPos = _playerTransform.position;
             _phantomTraces[currentRun].Add(playerPos);
-            if (_phantomTraces[currentRun].Count != currentTick + 1)
-            {
-                Debug.Log("phantomtraces array len error");
-            }
         }
 
     }
