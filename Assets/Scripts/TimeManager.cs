@@ -36,9 +36,9 @@ public class TimeManager : MonoBehaviour {
         return _currentRun;
     }
 
-    public double GetSecondsRemaining()
+    public int GetSecondsRemaining()
     {
-        return (_levelTimeTicks - _currentTick) / 50.0;
+        return (int)((_levelTimeTicks - _currentTick) / 50.0);
     }
 
     void Start()
