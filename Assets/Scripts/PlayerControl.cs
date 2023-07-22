@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour {
 
     public Vector2 speed = new Vector2(5, 11);
+    public Animator animator;
 
     public bool can_jump = false;
 
@@ -35,6 +36,8 @@ public class PlayerControl : MonoBehaviour {
         movement *= Time.deltaTime;
 
         transform.Translate(movement);
+
+        animator.SetFloat("speed", Mathf.Abs(movement.x));
         
         if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow)) {
             if (can_jump) {
@@ -45,15 +48,26 @@ public class PlayerControl : MonoBehaviour {
                 rb.AddForce(Vector2.up * speed.y, ForceMode2D.Impulse);
             }
         }
+
+        if (movement.x > 0)
+        {
+            gameObject.transform.localScale = new Vector3(2, 2, 2);
+        }
+        if (movement.x < 0)
+        {
+            gameObject.transform.localScale = new Vector3(-2, 2, 2);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision) {
         if (collision.tag == "platform" || collision.tag == "Box") {
             can_jump = true;
+            animator.SetBool("isJumping", false);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
         can_jump = false;
+        animator.SetBool("isJumping", true);
     }
 }
