@@ -48,9 +48,10 @@ public class PlayerControl : MonoBehaviour {
                 rb.AddForce(Vector2.up * speed.y, ForceMode2D.Impulse);
             }
         }
-        if (Input.GetAxis("Horizontal") != 0)
+        if (movement.x != 0)
         {
             Dust.Play();
+            Debug.Log(movement.x);
         }
         if (movement.x > 0)
         {
