@@ -294,7 +294,7 @@ ParticleSystemRenderer:
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_ShadowBias: 0
-  m_RenderAlignment: 0
+  m_RenderAlignment: 1
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 0
@@ -322,7 +322,7 @@ ParticleSystem:
   m_GameObject: {fileID: 72050748}
   serializedVersion: 8
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 1.6
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -330,7 +330,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -396,7 +396,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.6
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -567,7 +567,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0.3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -952,7 +952,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 1, y: 0, z: 1}
+    m_Scale: {x: 0.66, y: 0, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -1776,12 +1776,12 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 998806423, guid: 14cff3d5c71ccbd4a9332f62756900ce, type: 3}
-    - sprite: {fileID: 1488035488, guid: 14cff3d5c71ccbd4a9332f62756900ce, type: 3}
-    - sprite: {fileID: -1965952405, guid: 14cff3d5c71ccbd4a9332f62756900ce, type: 3}
-    - sprite: {fileID: 296617149, guid: 14cff3d5c71ccbd4a9332f62756900ce, type: 3}
-    - sprite: {fileID: -154362644, guid: 14cff3d5c71ccbd4a9332f62756900ce, type: 3}
-    - sprite: {fileID: -2116463118, guid: 14cff3d5c71ccbd4a9332f62756900ce, type: 3}
+    - sprite: {fileID: 2024015686, guid: e0da6122b830f7249a8ead8483cf692f, type: 3}
+    - sprite: {fileID: 44212236, guid: e0da6122b830f7249a8ead8483cf692f, type: 3}
+    - sprite: {fileID: -800394377, guid: e0da6122b830f7249a8ead8483cf692f, type: 3}
+    - sprite: {fileID: -948982849, guid: e0da6122b830f7249a8ead8483cf692f, type: 3}
+    - sprite: {fileID: -382080502, guid: e0da6122b830f7249a8ead8483cf692f, type: 3}
+    - sprite: {fileID: 319893715, guid: e0da6122b830f7249a8ead8483cf692f, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -1789,7 +1789,7 @@ ParticleSystem:
     x:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -1.42
+      scalar: -0.76
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1842,7 +1842,7 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.43
+      scalar: 0.51
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2369,7 +2369,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    inWorldSpace: 0
+    inWorldSpace: 1
   InheritVelocityModule:
     enabled: 0
     m_Mode: 0
