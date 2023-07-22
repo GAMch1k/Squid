@@ -35,31 +35,30 @@ public class PlayerControl : MonoBehaviour {
     void FixedUpdate() {
         Vector3 movement = new Vector3(speed.x * Input.GetAxis("Horizontal"), 0, 0);
         movement *= Time.deltaTime;
-        Dust.Play();
         transform.Translate(movement);
 
         animator.SetFloat("speed", Mathf.Abs(movement.x));
         if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow)) {
             if (can_jump) {
                 can_jump = false; // maybe should delete it
-                
+                Dust.Play();
+
                 Vector2 jump = new Vector2(0, speed.y);
 
                 rb.AddForce(Vector2.up * speed.y, ForceMode2D.Impulse);
             }
         }
-
+        if (Input.GetAxis("Horizontal") != 0)
+        {
+            Dust.Play();
+        }
         if (movement.x > 0)
         {
-            
             gameObject.transform.localScale = new Vector3(2, 2, 2);
-
         }
         if (movement.x < 0)
         {
-            
             gameObject.transform.localScale = new Vector3(-2, 2, 2);
-
         }
     }
 
