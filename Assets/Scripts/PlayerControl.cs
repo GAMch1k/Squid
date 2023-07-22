@@ -10,6 +10,9 @@ public class PlayerControl : MonoBehaviour {
     public ParticleSystem Dust;
     public bool can_jump = false;
 
+    public bool blockOnGameOver = false;
+    private bool gameOver = false;
+
     public Rigidbody2D rb;
 
     private Vector3 _initialPos;
@@ -20,11 +23,20 @@ public class PlayerControl : MonoBehaviour {
         _initialPos = gameObject.GetComponent<Transform>().position;
 
         TimeManager.NewTimeCycleEvent += _newTimeCycle;
+        if (blockOnGameOver)
+        {
+            TimeManager.GameOverEvent += _gameOver;
+        }
     }
 
     private void OnDisable()
     {
         TimeManager.NewTimeCycleEvent -= _newTimeCycle;
+
+        if (blockOnGameOver)
+        {
+            TimeManager.GameOverEvent -= _gameOver;
+        }
     }
 
     private void _newTimeCycle()
@@ -32,7 +44,18 @@ public class PlayerControl : MonoBehaviour {
         gameObject.GetComponent<Transform>().position = _initialPos;
     }
 
+    private void _gameOver()
+    {
+        gameOver = true;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+    }
+
     void FixedUpdate() {
+        if (gameOver)
+        {
+            return;
+        }
+        
         Vector3 movement = new Vector3(speed.x * Input.GetAxis("Horizontal"), 0, 0);
         movement *= Time.deltaTime;
         transform.Translate(movement);
@@ -48,9 +71,10 @@ public class PlayerControl : MonoBehaviour {
                 rb.AddForce(Vector2.up * speed.y, ForceMode2D.Impulse);
             }
         }
-        if (Input.GetAxis("Horizontal") != 0)
+        if (movement.x != 0)
         {
             Dust.Play();
+            Debug.Log(movement.x);
         }
         if (movement.x > 0)
         {

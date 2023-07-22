@@ -4,24 +4,33 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class TimeManager : MonoBehaviour {
     private int _currentRun = -1;
     private int _currentTick;
 
-    public int levelTimeSeconds = 3;
+    public int levelTimeSeconds = 20;
+    public int maxTimeCycles = 3;
     private int _levelTimeTicks;
-
-    private Transform _initialPlayerPos; // replace with pos tracking
-
     public delegate void OnNewTimeCycle();
 
+    public delegate void OnGameOver();
+
     public static OnNewTimeCycle NewTimeCycleEvent;
+    public static OnGameOver GameOverEvent;
 
     private void _NewTimeCycle()
     {
         _currentRun++;
         _currentTick = 0;
+        
+        if (_currentRun > maxTimeCycles)
+        {
+            GameOverEvent?.Invoke();
+            Debug.Log("DEAD");
+            return;
+        }
         
         NewTimeCycleEvent?.Invoke();
     }
@@ -43,13 +52,16 @@ public class TimeManager : MonoBehaviour {
 
     void Start()
     {
-        _initialPlayerPos = GameObject.FindWithTag("Player").GetComponent<Transform>();
         _levelTimeTicks = levelTimeSeconds * 50;
         _NewTimeCycle();
     }
 
     void FixedUpdate()
     {
+        if (_currentRun > maxTimeCycles)
+        {
+            return;
+        }
         _currentTick++;
         if (_currentTick >= _levelTimeTicks)
         {
@@ -64,7 +76,7 @@ public class TimeManager : MonoBehaviour {
             return;
         }
 
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && _currentRun <= maxTimeCycles)
         {
             _NewTimeCycle();
         }
