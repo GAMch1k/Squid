@@ -5062,7 +5062,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286f46a01cd18da4ba35a0b3958890bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 834200154}
 --- !u!1 &270638744
 GameObject:
   m_ObjectHideFlags: 0
@@ -9519,7 +9518,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: {x: 8, y: 25}
   animator: {fileID: 1737050350}
-  can_jump: 0
+  Dust: {fileID: 72050751}
+  can_jump: 1
   rb: {fileID: 0}
 --- !u!61 &1737050348
 BoxCollider2D:
