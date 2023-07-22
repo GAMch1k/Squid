@@ -21,11 +21,13 @@ public class ShadowTheater : MonoBehaviour
         _shadowPrefab = Resources.Load("Prefabs/ShadowActor") as GameObject;
 
         TimeManager.NewTimeCycleEvent += _newTimeCycle;
+        TimeManager.GameOverEvent += _stopNewRecordings;
     }
 
     private void OnDisable()
     {
         TimeManager.NewTimeCycleEvent -= _newTimeCycle;
+        TimeManager.GameOverEvent -= _stopNewRecordings;
     }
 
     void FixedUpdate()
@@ -57,14 +59,14 @@ public class ShadowTheater : MonoBehaviour
         {
             _shadowReplay();
         }
-        
-        // if (isFinal)
-        // {
-        //     _recordNewTraces = false;
-        // }
 
         List<Vector3> whiteTemplate = new List<Vector3>();
         _phantomTraces.Add(whiteTemplate);
+    }
+
+    private void _stopNewRecordings()
+    {
+        _recordNewTraces = false;
     }
 
     private void _shadowReplay()
