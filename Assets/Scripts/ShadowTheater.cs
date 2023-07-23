@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,10 +8,10 @@ public class ShadowTheater : MonoBehaviour
     private GameObject _shadowPrefab;
     
     private List<GameObject> _shadows = new List<GameObject>();
-    private List<List<Vector3>> _phantomTraces = new List<List<Vector3>>(); // replace with pos tracking
+    private List<List<Vector3>> _phantomTraces = new List<List<Vector3>>();
     private bool _recordNewTraces;
 
-    void Start()
+    private void Start()
     {
         _recordNewTraces = true;
         _timeManager = GameObject.FindWithTag("timemanager").GetComponent<TimeManager>();
@@ -30,7 +28,7 @@ public class ShadowTheater : MonoBehaviour
         TimeManager.GameOverEvent -= _stopNewRecordings;
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         var currentTick = _timeManager.GetCurrentTick();
         var currentRun = _timeManager.GetCurrentRun();
@@ -55,7 +53,8 @@ public class ShadowTheater : MonoBehaviour
         var currentRun = _timeManager.GetCurrentRun();
         if (currentRun > 0)
         {
-            _shadowReplay();
+            GameObject newShadow = Instantiate(_shadowPrefab, gameObject.transform);
+            _shadows.Add(newShadow);
         }
 
         List<Vector3> whiteTemplate = new List<Vector3>();
@@ -65,13 +64,5 @@ public class ShadowTheater : MonoBehaviour
     private void _stopNewRecordings()
     {
         _recordNewTraces = false;
-    }
-
-    private void _shadowReplay()
-    {
-        GameObject newShadow = Instantiate(_shadowPrefab);
-        Debug.Log("created new shadow");
-        newShadow.transform.parent = gameObject.transform;
-        _shadows.Add(newShadow);
     }
 }
