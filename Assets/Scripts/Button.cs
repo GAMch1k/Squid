@@ -1,41 +1,66 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Button : MonoBehaviour {
 
     public bool triggered = false;
-    public bool only_box = false;
+    [FormerlySerializedAs("only_box")] public bool onlyBox = false;
     public Animator animator;
 
-    private void OnTriggerStay2D(Collider2D collision) {
-        if (only_box) {
-            if (collision.tag == "Box") {
-                triggered = true;
-                animator.SetBool("isActive", true);
-                //Debug.Log("BOX BUTTON OPENED");
-            }
-        } else {
-            if (collision.tag == "Player" || collision.tag == "Box" || collision.tag == "Shadow") {
-                triggered = true;
-                animator.SetBool("isActive", true);
-                //Debug.Log("BUTTON OPENED");
-            }
+    private List<String> _currentlyCollided = new List<string>();
+    
+    private static readonly int IsActive = Animator.StringToHash("isActive");
 
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (onlyBox)
+        {
+            if (!collision.CompareTag("Box"))
+            {
+                return;
+            }
+        }
+        else
+        {
+            if (!collision.CompareTag("Player") && !collision.CompareTag("Box") && !collision.CompareTag("Shadow"))
+            {
+                return;
+            }
+        }
+
+        if (!_currentlyCollided.Contains(collision.gameObject.name))
+        {
+            triggered = true;
+            animator.SetBool(IsActive, true);
+            _currentlyCollided.Add(collision.gameObject.name);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
-        if (only_box) { 
-            if (collision.tag == "Box") {
-                triggered = false;
-                animator.SetBool("isActive", false);
+        if (onlyBox)
+        {
+            if (!collision.CompareTag("Box"))
+            {
+                return;
             }
-        } else {
-            if (collision.tag != "Player" || collision.tag != "Shadow")
+        }
+        else
+        {
+            if (!collision.CompareTag("Player") && !collision.CompareTag("Box") && !collision.CompareTag("Shadow"))
+            {
+                return;
+            }
+        }
+
+        if (_currentlyCollided.Contains(collision.gameObject.name))
+        {
+            _currentlyCollided.Remove(collision.gameObject.name);
+            if (_currentlyCollided.Count == 0)
             {
                 triggered = false;
-                animator.SetBool("isActive", false);
+                animator.SetBool(IsActive, false);
             }
         }
     }
