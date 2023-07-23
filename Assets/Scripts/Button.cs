@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Button : MonoBehaviour {
 
     public bool triggered = false;
-    public bool only_box = false;
+    [FormerlySerializedAs("only_box")] public bool onlyBox = false;
     public Animator animator;
 
     private List<String> _currentlyCollided = new List<string>();
@@ -14,19 +15,7 @@ public class Button : MonoBehaviour {
     private static readonly int IsActive = Animator.StringToHash("isActive");
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        // if (only_box) {
-        //     if (collision.CompareTag("Box")) {
-        //         triggered = true;
-        //         animator.SetBool(IsActive, true);
-        //     }
-        // } else {
-        //     if (collision.CompareTag("Player") || collision.CompareTag("Box") || collision.CompareTag("Shadow")) {
-        //         triggered = true;
-        //         animator.SetBool(IsActive, true);
-        //     }
-        // }
-        
-        if (only_box)
+        if (onlyBox)
         {
             if (!collision.CompareTag("Box"))
             {
@@ -50,20 +39,7 @@ public class Button : MonoBehaviour {
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
-        // if (only_box) { 
-        //     if (collision.CompareTag("Box")) {
-        //         triggered = false;
-        //         animator.SetBool(IsActive, false);
-        //     }
-        // } else {
-        //     if (!collision.CompareTag("Player") || !collision.CompareTag("Shadow"))
-        //     {
-        //         triggered = false;
-        //         animator.SetBool(IsActive, false);
-        //     }
-        // }
-        
-        if (only_box)
+        if (onlyBox)
         {
             if (!collision.CompareTag("Box"))
             {
