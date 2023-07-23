@@ -8,6 +8,7 @@ public class ButtonPlay : MonoBehaviour
 {
     public Animator anim;
     public GameObject menu;
+    public AudioSource audio;
     public GameObject ShadowMenu;
     public GameObject button1;
     public GameObject button2;
@@ -36,10 +37,12 @@ public class ButtonPlay : MonoBehaviour
     }
     public void onMenuExtendYes()
     {
+        
         button1.SetActive(false);
         button2.SetActive(false);
         button3.SetActive(true);
         ExecuteTrigger("sett");
+        audio.Play();
 
     }
     public void onMenuExtendNo()
@@ -50,7 +53,7 @@ public class ButtonPlay : MonoBehaviour
         button3.GetComponent<Animator>().SetTrigger("Back");
         ExecuteTrigger("def");
         button3.SetActive(false);
-
+        audio.Play();
     }
     
 }
