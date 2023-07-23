@@ -12,7 +12,7 @@ public class Lever : MonoBehaviour {
     
     private static readonly int IsActive = Animator.StringToHash("isActive");
 
-    private void OnTriggerEnter2D(Collider2D collision) {
+    private void OnTriggerStay2D(Collider2D collision) {
         if (collision.CompareTag("Player") || collision.CompareTag("Shadow")) {
             if (!_currentlyCollided.Contains(collision.gameObject.name))
             {
