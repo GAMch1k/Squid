@@ -8,7 +8,9 @@ public class PlayerControl : MonoBehaviour {
     public Vector2 speed = new Vector2(5, 11);
     public Animator animator;
     public ParticleSystem Dust;
+    public AudioSource steps;
     public bool can_jump = false;
+    private bool _isPlayAud = false;
 
     public bool blockOnGameOver = false;
     private bool gameOver = false;
@@ -28,7 +30,12 @@ public class PlayerControl : MonoBehaviour {
             TimeManager.GameOverEvent += _gameOver;
         }
     }
-
+    private void Update()
+    {
+        Debug.Log(animator.GetCurrentAnimatorStateInfo(0).IsName("run"));
+        if (!steps.isPlaying && animator.GetCurrentAnimatorStateInfo(0).IsName("run"))
+            steps.Play();
+    }
     private void OnDisable()
     {
         TimeManager.NewTimeCycleEvent -= _newTimeCycle;
@@ -71,9 +78,12 @@ public class PlayerControl : MonoBehaviour {
                 rb.AddForce(Vector2.up * speed.y, ForceMode2D.Impulse);
             }
         }
+            
         if (movement.x != 0)
         {
+            
             Dust.Play();
+
         }
         if (movement.x > 0)
         {
