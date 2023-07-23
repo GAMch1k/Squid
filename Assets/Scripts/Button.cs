@@ -13,13 +13,13 @@ public class Button : MonoBehaviour {
             if (collision.tag == "Box") {
                 triggered = true;
                 animator.SetBool("isActive", true);
-                Debug.Log("BOX BUTTON OPENED");
+                //Debug.Log("BOX BUTTON OPENED");
             }
         } else {
             if (collision.tag == "Player" || collision.tag == "Box" || collision.tag == "Shadow") {
                 triggered = true;
                 animator.SetBool("isActive", true);
-                Debug.Log("BUTTON OPENED");
+                //Debug.Log("BUTTON OPENED");
             }
 
         }

@@ -11,7 +11,7 @@ public class Lever : MonoBehaviour {
         if (collision.tag == "Player" || collision.tag == "Shadow") {
             triggered = true;
             animator.SetBool("isActive", true);
-            Debug.Log("LEVER OPENED");
+            //Debug.Log("LEVER OPENED");
         }
     }
     

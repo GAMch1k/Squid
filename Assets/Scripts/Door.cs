@@ -20,10 +20,18 @@ public class Door : MonoBehaviour {
                     break;
                 }
             } catch {
-                if (!gobject.GetComponent<Button>().triggered) {
-                    CloseDoor();
-                    break;
+                try {
+                    if (!gobject.GetComponent<Button>().triggered) {
+                        CloseDoor();
+                        break;
+                    }
+                } catch {
+                    if (!gobject.GetComponent<Wire>().triggered) {
+                        CloseDoor();
+                        break;
+                    }
                 }
+                
             }
 
             OpenDoor();
