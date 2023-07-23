@@ -55,7 +55,7 @@ public class PlayerControl : MonoBehaviour {
         {
             return;
         }
-        
+
         Vector3 movement = new Vector3(speed.x * Input.GetAxis("Horizontal"), 0, 0);
         movement *= Time.deltaTime;
         transform.Translate(movement);
@@ -94,8 +94,13 @@ public class PlayerControl : MonoBehaviour {
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
-        if (collision.tag != "platform" || collision.tag != "Box")
+        if (collision.tag != "platform" 
+            && collision.tag != "Box" 
+            && collision.tag != "Untagged"
+            && collision.tag != "Shadow"
+            && collision.tag != "Box")
         {
+            Debug.Log("asdasdasdasd" + collision.tag + "asdasdasdasd");
             can_jump = false;
             animator.SetBool("isJumping", true);
         }
