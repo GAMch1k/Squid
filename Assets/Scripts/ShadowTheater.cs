@@ -44,11 +44,9 @@ public class ShadowTheater : MonoBehaviour
             _shadows[i].GetComponent<Transform>().position = _phantomTraces[i][currentTick];
         }
 
-        if (_recordNewTraces)
-        {
-            var playerPos = _playerTransform.position;
-            _phantomTraces[currentRun].Add(playerPos);
-        }
+        if (!_recordNewTraces) return;
+        var playerPos = _playerTransform.position;
+        _phantomTraces[currentRun].Add(playerPos);
 
     }
 

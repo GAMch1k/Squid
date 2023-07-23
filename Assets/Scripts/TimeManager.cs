@@ -53,7 +53,7 @@ public class TimeManager : MonoBehaviour {
     void Start()
     {
         _levelTimeTicks = levelTimeSeconds * 50;
-        _NewTimeCycle();
+        
     }
 
     void FixedUpdate()
@@ -63,6 +63,11 @@ public class TimeManager : MonoBehaviour {
             return;
         }
         _currentTick++;
+        if (_currentRun == -1 && _currentTick > 0)
+        {
+            _NewTimeCycle();
+            return;
+        }
         if (_currentTick >= _levelTimeTicks)
         {
             _NewTimeCycle();
