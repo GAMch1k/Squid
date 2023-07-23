@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -7,20 +8,32 @@ public class Lever : MonoBehaviour {
     public bool triggered = false;
     public Animator animator;
 
-    private void OnTriggerStay2D(Collider2D collision) {
-        if (collision.tag == "Player" || collision.tag == "Shadow") {
-            triggered = true;
-            animator.SetBool("isActive", true);
-            //Debug.Log("LEVER OPENED");
+    private List<String> _currentlyCollided = new List<string>();
+    
+    private static readonly int IsActive = Animator.StringToHash("isActive");
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.CompareTag("Player") || collision.CompareTag("Shadow")) {
+            if (!_currentlyCollided.Contains(collision.gameObject.name))
+            {
+                triggered = true;
+                animator.SetBool(IsActive, true);
+                _currentlyCollided.Add(collision.gameObject.name);
+            }
         }
     }
 
 
-    private void OnTriggerExit2D(Collider2D collision) {
-        if (collision.tag != "Player" || collision.tag != "Shadow")
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (_currentlyCollided.Contains(collision.gameObject.name))
         {
-            triggered = false;
-            animator.SetBool("isActive", false);
+            _currentlyCollided.Remove(collision.gameObject.name);
+            if (_currentlyCollided.Count == 0)
+            {
+                triggered = false;
+                animator.SetBool(IsActive, false);
+            }
         }
     }
 }
