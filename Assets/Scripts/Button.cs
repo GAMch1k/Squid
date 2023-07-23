@@ -14,7 +14,7 @@ public class Button : MonoBehaviour {
     
     private static readonly int IsActive = Animator.StringToHash("isActive");
 
-    private void OnTriggerEnter2D(Collider2D collision) {
+    private void OnTriggerStay2D(Collider2D collision) {
         if (onlyBox)
         {
             if (!collision.CompareTag("Box"))
