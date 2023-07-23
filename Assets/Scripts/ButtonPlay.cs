@@ -13,6 +13,7 @@ public class ButtonPlay : MonoBehaviour
     public GameObject button1;
     public GameObject button2;
     public GameObject button3;
+    public GameObject button4;
     public GameObject slider;
 
     private void ExecuteTrigger(string trigger)
@@ -41,7 +42,7 @@ public class ButtonPlay : MonoBehaviour
         
         button1.SetActive(false);
         button2.SetActive(false);
-
+        button4.SetActive(true);
         slider.SetActive(true);
         button3.SetActive(true);
         ExecuteTrigger("sett");
@@ -56,7 +57,7 @@ public class ButtonPlay : MonoBehaviour
         button3.GetComponent<Animator>().SetTrigger("Back");
         ExecuteTrigger("def");
         button3.SetActive(false);
-
+        button4.SetActive(false);
         slider.SetActive(false);
         audio.Play();
     }
