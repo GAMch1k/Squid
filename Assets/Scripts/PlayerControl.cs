@@ -74,20 +74,25 @@ public class PlayerControl : MonoBehaviour {
         if (movement.x != 0)
         {
             Dust.Play();
-            Debug.Log(movement.x);
         }
         if (movement.x > 0)
         {
-            gameObject.transform.localScale = new Vector3(2, 2, 2);
+            gameObject.transform.localScale = new Vector3(
+                MathF.Abs(gameObject.transform.localScale.x), 
+                MathF.Abs(gameObject.transform.localScale.y), 
+                MathF.Abs(gameObject.transform.localScale.z));
         }
         if (movement.x < 0)
         {
-            gameObject.transform.localScale = new Vector3(-2, 2, 2);
+            gameObject.transform.localScale = new Vector3(
+                MathF.Abs(gameObject.transform.localScale.x) * -1,
+                MathF.Abs(gameObject.transform.localScale.y),
+                MathF.Abs(gameObject.transform.localScale.z));
         }
     }
 
     private void OnTriggerStay2D(Collider2D collision) {
-        if (collision.tag == "platform" || collision.tag == "Box") {
+        if (collision.tag == "platform") {
             can_jump = true;
             animator.SetBool("isJumping", false);
         }
@@ -100,7 +105,6 @@ public class PlayerControl : MonoBehaviour {
             && collision.tag != "Shadow"
             && collision.tag != "Box")
         {
-            Debug.Log("asdasdasdasd" + collision.tag + "asdasdasdasd");
             can_jump = false;
             animator.SetBool("isJumping", true);
         }

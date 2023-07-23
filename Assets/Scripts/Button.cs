@@ -26,7 +26,17 @@ public class Button : MonoBehaviour {
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
-        triggered = false;
-        animator.SetBool("isActive", false);
+        if (only_box) { 
+            if (collision.tag == "Box") {
+                triggered = false;
+                animator.SetBool("isActive", false);
+            }
+        } else {
+            if (collision.tag != "Player" || collision.tag != "Shadow")
+            {
+                triggered = false;
+                animator.SetBool("isActive", false);
+            }
+        }
     }
 }

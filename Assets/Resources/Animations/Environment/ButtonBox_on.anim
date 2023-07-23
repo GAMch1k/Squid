@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ButtonOnlyBox_off
+  m_Name: ButtonBox_on
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,9 +21,9 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -1328481885, guid: f72eb9fed910915409b7e8121bea1930, type: 3}
+      value: {fileID: 804560676, guid: a4de3da9ef0f724499b7078ec4aacf94, type: 3}
     - time: 0.016666668
-      value: {fileID: 952340807, guid: f72eb9fed910915409b7e8121bea1930, type: 3}
+      value: {fileID: 1379980184, guid: a4de3da9ef0f724499b7078ec4aacf94, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,8 +46,8 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -1328481885, guid: f72eb9fed910915409b7e8121bea1930, type: 3}
-    - {fileID: 952340807, guid: f72eb9fed910915409b7e8121bea1930, type: 3}
+    - {fileID: 804560676, guid: a4de3da9ef0f724499b7078ec4aacf94, type: 3}
+    - {fileID: 1379980184, guid: a4de3da9ef0f724499b7078ec4aacf94, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
