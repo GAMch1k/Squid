@@ -106,6 +106,15 @@ public class PlayerControl : MonoBehaviour {
             can_jump = true;
             animator.SetBool("isJumping", false);
         }
+        if (collision.tag == "killzone")
+        {
+            _newTimeCycle(); 
+        }
+    }
+
+    private IEnumerator wait(int sec) 
+    {
+        yield return new WaitForSeconds(sec);
     }
 
     private void OnTriggerExit2D(Collider2D collision) {

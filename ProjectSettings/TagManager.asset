@@ -10,6 +10,7 @@ TagManager:
   - timemanager
   - Usable
   - Box
+  - killzone
   layers:
   - Default
   - TransparentFX
