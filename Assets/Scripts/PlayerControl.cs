@@ -108,6 +108,7 @@ public class PlayerControl : MonoBehaviour {
         }
         if (collision.tag == "killzone")
         {
+            Debug.Log("asdasd");
             _newTimeCycle(); 
         }
     }
