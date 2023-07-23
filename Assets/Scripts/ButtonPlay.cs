@@ -14,7 +14,9 @@ public class ButtonPlay : MonoBehaviour
     public GameObject button2;
     public GameObject button3;
     public GameObject button4;
+    public GameObject button5;
     public GameObject slider;
+    public GameObject slider1;
 
     private void ExecuteTrigger(string trigger)
     {
@@ -42,7 +44,9 @@ public class ButtonPlay : MonoBehaviour
         
         button1.SetActive(false);
         button2.SetActive(false);
+        button5.SetActive(true);
         button4.SetActive(true);
+        slider1.SetActive(true);
         slider.SetActive(true);
         button3.SetActive(true);
         ExecuteTrigger("sett");
@@ -58,6 +62,8 @@ public class ButtonPlay : MonoBehaviour
         ExecuteTrigger("def");
         button3.SetActive(false);
         button4.SetActive(false);
+        button5.SetActive(false);
+        slider1.SetActive(false);
         slider.SetActive(false);
         audio.Play();
     }

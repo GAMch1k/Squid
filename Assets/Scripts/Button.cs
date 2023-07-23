@@ -9,6 +9,7 @@ public class Button : MonoBehaviour {
     public bool triggered = false;
     [FormerlySerializedAs("only_box")] public bool onlyBox = false;
     public Animator animator;
+    public AudioSource audio;
 
     private List<String> _currentlyCollided = new List<string>();
     
@@ -32,6 +33,7 @@ public class Button : MonoBehaviour {
 
         if (!_currentlyCollided.Contains(collision.gameObject.name))
         {
+            audio.Play();
             triggered = true;
             animator.SetBool(IsActive, true);
             _currentlyCollided.Add(collision.gameObject.name);
@@ -59,6 +61,7 @@ public class Button : MonoBehaviour {
             _currentlyCollided.Remove(collision.gameObject.name);
             if (_currentlyCollided.Count == 0)
             {
+                audio.Play();
                 triggered = false;
                 animator.SetBool(IsActive, false);
             }
