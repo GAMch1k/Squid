@@ -1796,7 +1796,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2002283972}
-  - {fileID: 777346382}
   - {fileID: 2103456329}
   - {fileID: 247660610}
   m_Father: {fileID: 0}
@@ -2009,9 +2008,8 @@ GameObject:
   - component: {fileID: 777346382}
   - component: {fileID: 777346379}
   - component: {fileID: 777346381}
-  - component: {fileID: 777346380}
   m_Layer: 3
-  m_Name: Dust
+  m_Name: chereshnya
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2025,16 +2023,16 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777346378}
   serializedVersion: 8
-  lengthInSec: 0.14
+  lengthInSec: 1
   simulationSpeed: 2
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 0
+  looping: 1
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -2100,7 +2098,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.6
+      scalar: 100
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -2588,7 +2586,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 100
+    maxNumParticles: 10000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -3480,12 +3478,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 2024015686, guid: e0da6122b830f7249a8ead8483cf692f, type: 3}
-    - sprite: {fileID: 44212236, guid: e0da6122b830f7249a8ead8483cf692f, type: 3}
-    - sprite: {fileID: -800394377, guid: e0da6122b830f7249a8ead8483cf692f, type: 3}
-    - sprite: {fileID: -948982849, guid: e0da6122b830f7249a8ead8483cf692f, type: 3}
-    - sprite: {fileID: -382080502, guid: e0da6122b830f7249a8ead8483cf692f, type: 3}
-    - sprite: {fileID: 319893715, guid: e0da6122b830f7249a8ead8483cf692f, type: 3}
+    - sprite: {fileID: 21300000, guid: 98ce8841406d1bb44bcb71fbb769373a, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -3493,7 +3486,7 @@ ParticleSystem:
     x:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -0.76
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -6754,18 +6747,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &777346380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 777346378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 286f46a01cd18da4ba35a0b3958890bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!199 &777346381
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -6846,12 +6827,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777346378}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.024, y: -0.482, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.27, y: -5.12, z: -2}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 635190173}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &800259640
 GameObject:
@@ -9954,3 +9935,4 @@ SceneRoots:
   - {fileID: 1359242323}
   - {fileID: 2085015708}
   - {fileID: 1787762030}
+  - {fileID: 777346382}
