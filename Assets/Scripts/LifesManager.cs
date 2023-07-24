@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +21,7 @@ public class LifesManager : MonoBehaviour {
 
     void Start() {
         TimeManager.NewTimeCycleEvent += _decreaseHealth;
+        TimeManager.GameOverEvent += GameOver;
 
         pos_x = fullClockImage.GetComponent<RectTransform>().position.x;
         pos_y = fullClockImage.GetComponent<RectTransform>().position.y;
@@ -33,9 +35,16 @@ public class LifesManager : MonoBehaviour {
         ResetHealthBar();
     }
 
+
+    void GameOver() {
+
+    }
+
     private void OnDisable()
     {
         TimeManager.NewTimeCycleEvent -= _decreaseHealth;
+        TimeManager.GameOverEvent -= GameOver;
+
     }
 
     private void _decreaseHealth() {
