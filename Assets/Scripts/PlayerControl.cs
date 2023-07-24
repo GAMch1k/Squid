@@ -49,10 +49,12 @@ public class PlayerControl : MonoBehaviour {
     private void _newTimeCycle()
     {
         gameObject.GetComponent<Transform>().position = _initialPos;
+        animator.SetTrigger("reborn");
     }
 
     private void _gameOver()
     {
+        animator.SetTrigger("kill");
         gameOver = true;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
     }
@@ -108,7 +110,6 @@ public class PlayerControl : MonoBehaviour {
         }
         if (collision.tag == "killzone")
         {
-            Debug.Log("asdasd");
             _newTimeCycle(); 
         }
     }
