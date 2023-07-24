@@ -18,24 +18,26 @@ public class Door : MonoBehaviour {
 
     private void Update() {
         foreach (GameObject gobject in interactables) {
-            try {
+
+            if (gobject.GetComponent<Lever>() != null) {
                 if (!gobject.GetComponent<Lever>().triggered) {
                     CloseDoor();
                     break;
                 }
-            } catch {
-                try {
-                    if (!gobject.GetComponent<Button>().triggered) {
-                        CloseDoor();
-                        break;
-                    }
-                } catch {
-                    if (!gobject.GetComponent<Wire>().triggered) {
-                        CloseDoor();
-                        break;
-                    }
+            }
+
+            if (gobject.GetComponent<Button>() != null) {
+                if (!gobject.GetComponent<Button>().triggered) {
+                    CloseDoor();
+                    break;
                 }
-                
+            }
+
+            if (gobject.GetComponent<Wire>() != null) {
+                if (!gobject.GetComponent<Wire>().triggered) {
+                    CloseDoor();
+                    break;
+                }
             }
 
             OpenDoor();
