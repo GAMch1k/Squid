@@ -2764,6 +2764,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1021601232 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5702387108319421998, guid: f01e6d095d5a6da4fb2c83afcc80251a, type: 3}
+  m_PrefabInstance: {fileID: 1427742467}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1038738951
 GameObject:
   m_ObjectHideFlags: 0
@@ -3763,11 +3768,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5339874194716396180, guid: f01e6d095d5a6da4fb2c83afcc80251a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.07
+      value: 14.37
       objectReference: {fileID: 0}
     - target: {fileID: 5339874194716396180, guid: f01e6d095d5a6da4fb2c83afcc80251a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.463
+      value: -3.05
       objectReference: {fileID: 0}
     - target: {fileID: 5339874194716396180, guid: f01e6d095d5a6da4fb2c83afcc80251a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3801,6 +3806,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5825506136863483441, guid: f01e6d095d5a6da4fb2c83afcc80251a, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1021601232}
     - target: {fileID: 5825506136863483441, guid: f01e6d095d5a6da4fb2c83afcc80251a, type: 3}
       propertyPath: interactables.Array.data[0]
       value: 
@@ -5254,6 +5263,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 673907455}
     m_Modifications:
+    - target: {fileID: 67671440166102882, guid: f01e6d095d5a6da4fb2c83afcc80251a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.422
+      objectReference: {fileID: 0}
+    - target: {fileID: 67671440166102882, guid: f01e6d095d5a6da4fb2c83afcc80251a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.702
+      objectReference: {fileID: 0}
     - target: {fileID: 5339874194716396180, guid: f01e6d095d5a6da4fb2c83afcc80251a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.63
@@ -5311,7 +5328,8 @@ PrefabInstance:
       value: Door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4608290372287888076, guid: f01e6d095d5a6da4fb2c83afcc80251a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f01e6d095d5a6da4fb2c83afcc80251a, type: 3}
