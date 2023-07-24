@@ -75,6 +75,11 @@ public class TimeManager : MonoBehaviour {
         return _currentRun;
     }
 
+    public int GetMaxTimeCycles()
+    {
+        return maxTimeCycles;
+    }
+
     public int GetSecondsRemaining()
     {
         return (int)((_levelTimeTicks - _currentTick) / 50.0);
