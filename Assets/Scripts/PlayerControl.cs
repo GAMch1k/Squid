@@ -31,9 +31,9 @@ public class PlayerControl : MonoBehaviour {
     }
     private void Update()
     {
-        Debug.Log(animator.GetCurrentAnimatorStateInfo(0).IsName("run"));
-        if (!steps.isPlaying && animator.GetCurrentAnimatorStateInfo(0).IsName("run"))
-            steps.Play();
+        // Debug.Log(animator.GetCurrentAnimatorStateInfo(0).IsName("run"));
+        // if (!steps.isPlaying && animator.GetCurrentAnimatorStateInfo(0).IsName("run"))
+        //     steps.Play();
     }
     private void OnDisable()
     {
@@ -49,10 +49,12 @@ public class PlayerControl : MonoBehaviour {
     {
         
         gameObject.GetComponent<Transform>().position = _initialPos;
+        animator.SetTrigger("reborn");
     }
 
     private void _gameOver()
     {
+        animator.SetTrigger("kill");
         gameOver = true;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
     }
@@ -108,9 +110,7 @@ public class PlayerControl : MonoBehaviour {
         }
         if (collision.tag == "killzone")
         {
-            animator.SetTrigger("kill");
-            StartCoroutine(waitAnim());
-            
+            _newTimeCycle(); 
         }
     }
 

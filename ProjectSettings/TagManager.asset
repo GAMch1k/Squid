@@ -11,6 +11,7 @@ TagManager:
   - Usable
   - Box
   - killzone
+  - PauseMenu
   layers:
   - Default
   - TransparentFX
