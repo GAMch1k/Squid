@@ -37,8 +37,15 @@ public class LifesManager : MonoBehaviour {
 
 
     void GameOver() {
+        Debug.Log("Game Over!");
 
+        var animators = GetComponentsInChildren<Animator>();
+
+        foreach (Animator gobject in animators) {
+            gobject.SetTrigger("GameOver");
+        }
     }
+
 
     private void OnDisable()
     {
