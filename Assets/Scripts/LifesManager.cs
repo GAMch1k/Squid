@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,14 +26,16 @@ public class LifesManager : MonoBehaviour {
 
         img_width = fullClockImage.GetComponent<RectTransform>().rect.width;
         img_height = fullClockImage.GetComponent<RectTransform>().rect.height;
-
-
+        
         _timeManager = GameObject.FindWithTag("timemanager").GetComponent<TimeManager>();
         maxHealth = _timeManager.GetMaxTimeCycles();
-
-
+        
         ResetHealthBar();
+    }
 
+    private void OnDisable()
+    {
+        TimeManager.NewTimeCycleEvent -= _decreaseHealth;
     }
 
     private void _decreaseHealth() {

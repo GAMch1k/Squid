@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class TimeManager : MonoBehaviour {
-    private int _currentRun = -1;
+    private int _currentRun;
     private int _currentTick;
 
     public int levelTimeSeconds = 20;
@@ -17,7 +17,7 @@ public class TimeManager : MonoBehaviour {
     private void Start()
     {
         _levelTimeTicks = levelTimeSeconds * 50;
-        
+        _currentRun = -1;
     }
     
     private void FixedUpdate()
@@ -61,7 +61,7 @@ public class TimeManager : MonoBehaviour {
             GameOverEvent?.Invoke();
             return;
         }
-        
+
         NewTimeCycleEvent?.Invoke();
     }
 

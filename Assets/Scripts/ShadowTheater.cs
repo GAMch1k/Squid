@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,9 +25,9 @@ public class ShadowTheater : MonoBehaviour
     private Transform _playerTransform;
     private Animator _playerAnimator;
     private GameObject _shadowPrefab;
-    
-    private List<GameObject> _shadows = new List<GameObject>();
-    private List<List<ShadowFrame>> _shadowTraces = new List<List<ShadowFrame>>();
+
+    private List<GameObject> _shadows;
+    private List<List<ShadowFrame>> _shadowTraces;
     private bool _recordNewTraces;
 
     private void Start()
@@ -37,6 +38,9 @@ public class ShadowTheater : MonoBehaviour
         _playerAnimator = GameObject.FindWithTag("Player").GetComponent<Animator>();
         
         _shadowPrefab = Resources.Load("Prefabs/ShadowActor") as GameObject;
+        
+        _shadows = new List<GameObject>();
+        _shadowTraces = new List<List<ShadowFrame>>();
 
         TimeManager.NewTimeCycleEvent += _newTimeCycle;
         TimeManager.GameOverEvent += _stopNewRecordings;
@@ -53,6 +57,11 @@ public class ShadowTheater : MonoBehaviour
         var currentTick = _timeManager.GetCurrentTick();
         var currentRun = _timeManager.GetCurrentRun();
         ShadowFrame shadowFrame;
+
+        if (currentRun < 0)
+        {
+            return;
+        }
 
         for (int i = 0; i < _shadows.Count; i++)
         {
@@ -82,8 +91,15 @@ public class ShadowTheater : MonoBehaviour
         var rd = _playerTransform.localScale.x > 0 ? true : false;
 
         shadowFrame = new ShadowFrame(playerPos, animCondSpeed, animIsJumping, rd);
-        _shadowTraces[currentRun].Add(shadowFrame);
-
+        try
+        {
+            _shadowTraces[currentRun].Add(shadowFrame);
+        }
+        catch (Exception e)
+        {
+            _newTimeCycle();
+        }
+        
     }
 
     private void _newTimeCycle()

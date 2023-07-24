@@ -32,9 +32,9 @@ public class PlayerControl : MonoBehaviour {
     }
     private void Update()
     {
-        Debug.Log(animator.GetCurrentAnimatorStateInfo(0).IsName("run"));
-        if (!steps.isPlaying && animator.GetCurrentAnimatorStateInfo(0).IsName("run"))
-            steps.Play();
+        // Debug.Log(animator.GetCurrentAnimatorStateInfo(0).IsName("run"));
+        // if (!steps.isPlaying && animator.GetCurrentAnimatorStateInfo(0).IsName("run"))
+        //     steps.Play();
     }
     private void OnDisable()
     {
