@@ -6,10 +6,13 @@ using UnityEngine;
 public class TimeRestorable : MonoBehaviour
 {
     private Vector3 _initialPos;
+
+    private Animator _animator;
     
     void Start()
     {
         _initialPos = gameObject.GetComponent<Transform>().position;
+        _animator = gameObject.GetComponent<Animator>();
 
         TimeManager.NewTimeCycleEvent += _restoreOnNewCycle;
     }
@@ -27,6 +30,7 @@ public class TimeRestorable : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("killzone")) {
             _restoreOnNewCycle();
+            _animator.SetTrigger("reborn");
         }
     }
 }
