@@ -29,7 +29,9 @@ public class ShadowTheater : MonoBehaviour
     private List<GameObject> _shadows;
     private List<List<ShadowFrame>> _shadowTraces;
     private bool _recordNewTraces;
-
+    public Animator animGameOver;
+    public GameObject objectPanelGameOver;
+    
     private void Start()
     {
         _recordNewTraces = true;
@@ -44,6 +46,7 @@ public class ShadowTheater : MonoBehaviour
 
         TimeManager.NewTimeCycleEvent += _newTimeCycle;
         TimeManager.GameOverEvent += _stopNewRecordings;
+        TimeManager.GameOverEvent += _uiGameOver;
     }
 
     private void OnDisable()
@@ -120,7 +123,10 @@ public class ShadowTheater : MonoBehaviour
         List<ShadowFrame> whiteTemplate = new List<ShadowFrame>();
         _shadowTraces.Add(whiteTemplate);
     }
-
+    private void _uiGameOver() {
+        objectPanelGameOver.SetActive(true);
+        animGameOver.SetTrigger("up");
+    }
     private void _stopNewRecordings()
     {
         _recordNewTraces = false;
