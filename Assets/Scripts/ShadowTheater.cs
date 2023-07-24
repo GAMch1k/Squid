@@ -4,16 +4,18 @@ using UnityEngine;
 
 public struct ShadowFrame
 {
-    public ShadowFrame(Vector3 pos, float speed, bool isj)
+    public ShadowFrame(Vector3 pos, float speed, bool isj, bool rd)
     {
         Position = pos;
         AnimCondSpeed = speed;
         AnimCondIsJumping = isj;
+        RightDirection = rd;
     }
     
     public Vector3 Position;
     public float AnimCondSpeed;
     public bool AnimCondIsJumping;
+    public bool RightDirection;
 }
 
 public class ShadowTheater : MonoBehaviour
@@ -60,8 +62,13 @@ public class ShadowTheater : MonoBehaviour
             }
 
             shadowFrame = _shadowTraces[i][currentTick];
-            
+
             _shadows[i].GetComponent<Transform>().position = shadowFrame.Position;
+
+            var shadowScale = _shadows[i].GetComponent<Transform>().localScale;
+            var xScale = shadowFrame.RightDirection ? 2 : -2;
+            _shadows[i].GetComponent<Transform>().localScale = new Vector3(xScale, shadowScale.y, shadowScale.z);
+            
             var shadowAnimator = _shadows[i].GetComponent<Animator>();
             shadowAnimator.SetFloat("speed", shadowFrame.AnimCondSpeed);
             shadowAnimator.SetBool("isJumping", shadowFrame.AnimCondIsJumping);
@@ -72,8 +79,9 @@ public class ShadowTheater : MonoBehaviour
         var playerPos = _playerTransform.position;
         var animCondSpeed = _playerAnimator.GetFloat("speed");
         var animIsJumping = _playerAnimator.GetBool("isJumping");
+        var rd = _playerTransform.localScale.x > 0 ? true : false;
 
-        shadowFrame = new ShadowFrame(playerPos, animCondSpeed, animIsJumping);
+        shadowFrame = new ShadowFrame(playerPos, animCondSpeed, animIsJumping, rd);
         _shadowTraces[currentRun].Add(shadowFrame);
 
     }
@@ -86,7 +94,7 @@ public class ShadowTheater : MonoBehaviour
             // fix if on time cycle end shadow was moving
             var lastFrameIndex = _shadowTraces[currentRun - 1].Count - 1;
             var modifiableShadowFrame = _shadowTraces[currentRun - 1][lastFrameIndex];
-            var newShadowFrame = new ShadowFrame(modifiableShadowFrame.Position, 0, false);
+            var newShadowFrame = new ShadowFrame(modifiableShadowFrame.Position, 0, false, modifiableShadowFrame.RightDirection);
             _shadowTraces[currentRun - 1][lastFrameIndex] = newShadowFrame;
             
             GameObject newShadow = Instantiate(_shadowPrefab, gameObject.transform);
