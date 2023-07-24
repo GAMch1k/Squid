@@ -14068,11 +14068,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5339874194716396180, guid: f01e6d095d5a6da4fb2c83afcc80251a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.102972
+      value: 18.17
       objectReference: {fileID: 0}
     - target: {fileID: 5339874194716396180, guid: f01e6d095d5a6da4fb2c83afcc80251a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.7349222
+      value: -3.2
       objectReference: {fileID: 0}
     - target: {fileID: 5339874194716396180, guid: f01e6d095d5a6da4fb2c83afcc80251a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14107,6 +14107,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5825506136863483441, guid: f01e6d095d5a6da4fb2c83afcc80251a, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 2040719496}
+    - target: {fileID: 5825506136863483441, guid: f01e6d095d5a6da4fb2c83afcc80251a, type: 3}
       propertyPath: interactables.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -14135,6 +14139,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f01e6d095d5a6da4fb2c83afcc80251a, type: 3}
+--- !u!95 &2040719496 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5702387108319421998, guid: f01e6d095d5a6da4fb2c83afcc80251a, type: 3}
+  m_PrefabInstance: {fileID: 2040719495}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2085462195 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 756659615767995684, guid: 1d66c2a07d1739d40a9be873ad11e661, type: 3}

@@ -49,6 +49,7 @@ public class PlayerControl : MonoBehaviour {
     private void _newTimeCycle()
     {
         gameObject.GetComponent<Transform>().position = _initialPos;
+        Debug.Log("asd");
         animator.SetTrigger("reborn");
     }
 
@@ -112,11 +113,6 @@ public class PlayerControl : MonoBehaviour {
         {
             _newTimeCycle(); 
         }
-    }
-
-    private IEnumerator wait(int sec) 
-    {
-        yield return new WaitForSeconds(sec);
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
