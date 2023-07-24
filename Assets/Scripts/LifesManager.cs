@@ -10,64 +10,52 @@ public class LifesManager : MonoBehaviour {
     public GameObject fullClockImage;
     public GameObject emptyClockImage;
 
-    Sprite emptyClockSprite;
-
+    float pos_x, pos_y;
+    float img_width, img_height;
     int maxHealth;
-    int healthLeft;
 
-    public List<GameObject> healthBar;
+    private GameObject _full_img;
+
 
     void Start() {
         TimeManager.NewTimeCycleEvent += _decreaseHealth;
-        emptyClockSprite = Resources.Load<Sprite>("Sprites/Environment/clock-empty.png");
+
+        pos_x = fullClockImage.GetComponent<RectTransform>().position.x;
+        pos_y = fullClockImage.GetComponent<RectTransform>().position.y;
+
+        img_width = fullClockImage.GetComponent<RectTransform>().rect.width;
+        img_height = fullClockImage.GetComponent<RectTransform>().rect.height;
 
 
         _timeManager = GameObject.FindWithTag("timemanager").GetComponent<TimeManager>();
         maxHealth = _timeManager.GetMaxTimeCycles();
-        healthLeft = maxHealth - _timeManager.GetCurrentRun();
 
 
-        float pos_x = fullClockImage.GetComponent<RectTransform>().position.x;
-        float pos_y = fullClockImage.GetComponent<RectTransform>().position.y;
-        float img_width = fullClockImage.GetComponent<RectTransform>().rect.width;
+        ResetHealthBar();
 
-        for (int i = 0; i < maxHealth; i++) {
-
-            var _full_img = Instantiate(fullClockImage);
-            _full_img.transform.parent = transform;
-
-            _full_img.transform.position = new Vector3(pos_x + img_width * i, pos_y, 0);
-
-            var _empty_img = Instantiate(emptyClockImage);
-            _empty_img.transform.parent = transform;
-
-            _empty_img.transform.position = new Vector3(pos_x + img_width * i, pos_y, 0);
-
-
-
-            healthBar.Add(_full_img);
-
-        }
-    }
-
-
-    void FixedUpdate() {
-        
     }
 
     private void _decreaseHealth() {
 
         if(_timeManager.GetCurrentRun() == 0) { return; }
 
-        if (healthBar.Count > 0) {
+        _full_img.transform.position = new Vector3(pos_x * (maxHealth - _timeManager.GetCurrentRun()), pos_y, 0);
+        _full_img.GetComponent<RectTransform>().sizeDelta = new Vector2(img_width * (maxHealth - _timeManager.GetCurrentRun()), img_height);
+    }
 
-            for (int i = 0; i < maxHealth - _timeManager.GetCurrentRun(); i++) { 
-                healthBar[healthBar.Count - i].gameObject.active = false;
-            }
 
-            
+    public void ResetHealthBar() {
+        
+        _full_img = Instantiate(fullClockImage);
+        _full_img.transform.parent = transform;
+        _full_img.transform.position = new Vector3(pos_x * maxHealth, pos_y, 0);
+        _full_img.GetComponent<RectTransform>().sizeDelta = new Vector2(img_width * maxHealth, img_height);
 
-        }
+        var empty_img = Instantiate(emptyClockImage);
+        empty_img.transform.parent = transform;
+        empty_img.transform.position = new Vector3(pos_x * maxHealth, pos_y, 0);
+        empty_img.GetComponent<RectTransform>().sizeDelta = new Vector2(img_width * maxHealth, img_height);
+
     }
 
 }
