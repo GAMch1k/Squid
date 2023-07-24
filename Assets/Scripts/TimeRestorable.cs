@@ -23,4 +23,10 @@ public class TimeRestorable : MonoBehaviour
     {
         gameObject.GetComponent<Transform>().position = _initialPos;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.CompareTag("killzone")) {
+            _restoreOnNewCycle();
+        }
+    }
 }
