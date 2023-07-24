@@ -460,6 +460,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1871682485}
+    - target: {fileID: 897689543712740296, guid: f7cacee38d9bd5c41998a1ad9bfacd3a, type: 3}
+      propertyPath: maxCameraPos.x
+      value: 10.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7638960451337627525, guid: f7cacee38d9bd5c41998a1ad9bfacd3a, type: 3}
       propertyPath: m_Name
       value: Camera Here

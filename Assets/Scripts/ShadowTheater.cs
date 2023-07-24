@@ -124,8 +124,8 @@ public class ShadowTheater : MonoBehaviour
         _shadowTraces.Add(whiteTemplate);
     }
     private void _uiGameOver() {
-        objectPanelGameOver.SetActive(true);
-        animGameOver.SetTrigger("up");
+        //objectPanelGameOver.SetActive(true);
+        //animGameOver.SetTrigger("up");
     }
     private void _stopNewRecordings()
     {
