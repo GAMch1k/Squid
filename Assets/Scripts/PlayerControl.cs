@@ -11,7 +11,6 @@ public class PlayerControl : MonoBehaviour {
     public AudioSource steps;
     public bool can_jump = false;
     private bool _isPlayAud = false;
-
     public bool blockOnGameOver = false;
     private bool gameOver = false;
 
@@ -48,6 +47,7 @@ public class PlayerControl : MonoBehaviour {
 
     private void _newTimeCycle()
     {
+        
         gameObject.GetComponent<Transform>().position = _initialPos;
     }
 
@@ -108,14 +108,23 @@ public class PlayerControl : MonoBehaviour {
         }
         if (collision.tag == "killzone")
         {
-            Debug.Log("asdasd");
-            _newTimeCycle(); 
+            animator.SetTrigger("kill");
+            StartCoroutine(waitAnim());
+            
         }
     }
 
     private IEnumerator wait(int sec) 
     {
         yield return new WaitForSeconds(sec);
+    }
+    private IEnumerator waitAnim() {
+        
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        yield return new WaitForSecondsRealtime(2.0f);
+        _newTimeCycle();
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
